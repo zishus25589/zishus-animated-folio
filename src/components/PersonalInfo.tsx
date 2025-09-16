@@ -55,8 +55,8 @@ const PersonalInfo = () => {
             <h3 className="text-xl font-semibold mb-2">Phone</h3>
             <div className="cross-container">
               <p className="text-sm text-muted-foreground">Currently Unavailable</p>
-              <div className="cross-line animate-cross-slash"></div>
-              <div className="cross-line animate-cross-backslash"></div>
+              
+              
             </div>
           </div>
         </div>
