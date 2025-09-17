@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState('');
-  const fullText = "Hi, I'm Zishu Ahmad";
+  const fullText = "Hi, I'm Zishu";
 
   useEffect(() => {
     let index = 0;

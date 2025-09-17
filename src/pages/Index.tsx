@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import LoadingScreen from '../components/LoadingScreen';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import PersonalInfo from '../components/PersonalInfo';
+import CodingPhilosophy from '../components/CodingPhilosophy';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Experience from '../components/Experience';
@@ -33,7 +33,7 @@ const Index = () => {
       <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Hero />
         <About />
-        <PersonalInfo />
+        <CodingPhilosophy />
         <Skills />
         <Projects />
         <Experience />

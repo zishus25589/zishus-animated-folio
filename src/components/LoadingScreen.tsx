@@ -9,10 +9,10 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [displayText, setDisplayText] = useState('');
   
   const steps = [
-    'Initializing system...',
-    'Loading portfolio data...',
-    'Establishing connection...',
-    'Welcome, Zishu Ahmad'
+    'Compiling code...',
+    'Loading projects...',
+    'Initializing portfolio...',
+    'Ready to code'
   ];
 
   useEffect(() => {
@@ -41,31 +41,39 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   }, [currentStep, onComplete]);
 
   return (
-    <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gradient-to-br from-background via-secondary/10 to-primary/5 flex items-center justify-center z-50">
       <div className="text-center">
         <div className="mb-8">
-          <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto"></div>
+          <div className="relative">
+            <div className="w-20 h-20 border-2 border-primary/30 rounded-lg rotate-45 mx-auto mb-4 animate-pulse"></div>
+            <div className="absolute inset-0 w-20 h-20 border-2 border-primary rounded-lg mx-auto animate-spin"></div>
+            <div className="absolute inset-2 w-16 h-16 bg-primary/10 rounded-lg mx-auto animate-pulse"></div>
+          </div>
         </div>
         
         <div className="mb-6">
-          <p className="text-lg font-mono text-foreground min-h-[1.5rem]">
+          <p className="text-xl font-mono text-primary font-bold min-h-[1.5rem]">
             {displayText}
-            <span className="typing-cursor"></span>
+            <span className="typing-cursor animate-blink">|</span>
           </p>
         </div>
         
-        <div className="flex justify-center space-x-2">
-          <div className="loading-dot"></div>
-          <div className="loading-dot"></div>
-          <div className="loading-dot"></div>
+        <div className="flex justify-center space-x-3 mb-8">
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
         </div>
         
-        <div className="mt-8 w-64 bg-secondary/20 rounded-full h-1 mx-auto">
+        <div className="w-80 bg-secondary/20 rounded-full h-2 mx-auto overflow-hidden">
           <div 
-            className="bg-primary h-1 rounded-full transition-all duration-1000 ease-out"
+            className="bg-gradient-to-r from-primary to-chart-2 h-2 rounded-full transition-all duration-1000 ease-out animate-shimmer"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
           ></div>
         </div>
+        
+        <p className="text-sm text-muted-foreground mt-4 font-mono">
+          Building the future, one line at a time...
+        </p>
       </div>
     </div>
   );
