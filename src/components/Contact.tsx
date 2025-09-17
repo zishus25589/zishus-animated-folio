@@ -1,125 +1,179 @@
-import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send, User, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "zishuahmad96@outlook.com",
-      href: "mailto:zishuahmad96@outlook.com"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Delhi, India",
-      href: "#"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "Currently Unavailable",
-      href: "#"
-    }
-  ];
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "#"
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn", 
-      href: "#"
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      href: "mailto:zishuahmad96@outlook.com"
-    }
-  ];
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for your message. I'll get back to you soon!",
+    });
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
   return (
-    <section id="contact" className="py-20 bg-card/50">
+    <section className="py-20 bg-gradient-to-br from-background via-secondary/10 to-primary/5">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Looking for opportunities to collaborate or just want to say hello? 
-            I'd love to hear from you!
+          <h2 className="text-5xl font-bold text-gradient mb-6 animate-slide-up">
+            Let's Connect
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-up">
+            Ready to bring your ideas to life? Let's discuss how we can work together to create something amazing.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-semibold mb-8 text-foreground">Let's Connect</h3>
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div className="glass-effect rounded-xl p-8 animate-bounce-in">
+              <h3 className="text-2xl font-bold text-gradient mb-6">Get In Touch</h3>
+              
               <div className="space-y-6">
-                {contactInfo.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-4 p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <a 
-                        href={item.href}
-                        className="text-foreground hover:text-primary transition-colors duration-300 font-medium"
-                      >
-                        {item.value}
-                      </a>
-                    </div>
+                {/* Email */}
+                <div className="flex items-center space-x-4 group hover-lift">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-chart-2 rounded-full flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-primary-foreground" />
                   </div>
-                ))}
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8">
-                <h4 className="text-lg font-semibold mb-4 text-foreground">Follow Me</h4>
-                <div className="flex gap-4">
-                  {socialLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      className="w-12 h-12 bg-card border border-border rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:scale-110"
-                      title={link.label}
-                    >
-                      <link.icon className="w-5 h-5" />
+                  <div>
+                    <h4 className="font-semibold text-lg">Email</h4>
+                    <a href="mailto:zishuahmad96@outlook.com" className="text-primary hover:text-primary/80 transition-colors">
+                      zishuahmad96@outlook.com
                     </a>
-                  ))}
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Call to Action */}
-            <div className="animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-              <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-primary/20">
-                <h3 className="text-2xl font-semibold mb-4 text-foreground">Ready to Work Together?</h3>
-                <p className="text-muted-foreground mb-6">
-                  I'm currently available for freelance work and exciting projects. 
-                  Whether you need a website, web application, or want to collaborate 
-                  on something amazing, let's make it happen!
-                </p>
-                <div className="space-y-4">
-                  <a 
-                    href="mailto:zishuahmad96@outlook.com"
-                    className="block w-full bg-primary text-primary-foreground text-center py-3 px-6 rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 glow-effect font-semibold"
-                  >
-                    Send Me an Email
-                  </a>
-                  <div className="text-center">
-                    <p className="text-sm text-muted-foreground">
-                      Usually responds within 24 hours
-                    </p>
+                {/* Phone with Unavailable Effect */}
+                <div className="flex items-center space-x-4 group hover-lift">
+                  <div className="w-12 h-12 bg-gradient-to-br from-chart-2 to-chart-3 rounded-full flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg">Phone</h4>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-muted-foreground">Currently Unavailable</span>
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping"></div>
+                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center space-x-4 group hover-lift">
+                  <div className="w-12 h-12 bg-gradient-to-br from-chart-3 to-chart-4 rounded-full flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg">Location</h4>
+                    <p className="text-muted-foreground">Delhi, India</p>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Resume Download */}
+            <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{ animationDelay: '0.2s' }}>
+              <h3 className="text-2xl font-bold text-gradient mb-4">Professional Resume</h3>
+              <p className="text-muted-foreground mb-6">
+                Download my complete resume for detailed information about my experience and skills.
+              </p>
+              <Button className="w-full hover-lift animate-shimmer group">
+                <User className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Download Resume (PDF)
+              </Button>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex items-center space-x-3 mb-6">
+              <MessageSquare className="w-8 h-8 text-primary" />
+              <h3 className="text-2xl font-bold text-gradient">Send Message</h3>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Your Name</label>
+                  <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                    className="border-primary/20 focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email Address</label>
+                  <Input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    required
+                    className="border-primary/20 focus:border-primary"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Subject</label>
+                <Input
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Project Discussion"
+                  required
+                  className="border-primary/20 focus:border-primary"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Message</label>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project ideas..."
+                  rows={6}
+                  required
+                  className="border-primary/20 focus:border-primary resize-none"
+                />
+              </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full hover-lift animate-shimmer group"
+                size="lg"
+              >
+                <Send className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Send Message
+              </Button>
+            </form>
           </div>
         </div>
       </div>

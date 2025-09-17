@@ -6,6 +6,7 @@ import CodingPhilosophy from '../components/CodingPhilosophy';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Experience from '../components/Experience';
+import Resume from '../components/Resume';
 import Contact from '../components/Contact';
 
 const Index = () => {
@@ -37,6 +38,7 @@ const Index = () => {
         <Skills />
         <Projects />
         <Experience />
+        <Resume />
         <Contact />
         
         {/* Footer */}
