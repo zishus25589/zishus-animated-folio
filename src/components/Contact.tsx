@@ -4,34 +4,36 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
+      description: "Thank you for your message. I'll get back to you soon!"
     });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-background via-secondary/10 to-primary/5">
+  return <section className="py-20 bg-gradient-to-br from-background via-secondary/10 to-primary/5">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-gradient mb-6 animate-slide-up">
@@ -56,9 +58,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Email</h4>
-                    <a href="mailto:zishuahmad96@outlook.com" className="text-primary hover:text-primary/80 transition-colors">
-                      zishuahmad96@outlook.com
-                    </a>
+                    <a href="mailto:zishuahmad96@outlook.com" className="text-primary hover:text-primary/80 transition-colors">zishuahmad96@outlook</a>
                   </div>
                 </div>
 
@@ -73,8 +73,12 @@ const Contact = () => {
                       <span className="text-muted-foreground">Currently Unavailable</span>
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-destructive rounded-full animate-ping"></div>
-                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{
+                        animationDelay: '0.5s'
+                      }}></div>
+                        <div className="w-2 h-2 bg-destructive rounded-full animate-ping" style={{
+                        animationDelay: '1s'
+                      }}></div>
                       </div>
                     </div>
                   </div>
@@ -94,7 +98,9 @@ const Contact = () => {
             </div>
 
             {/* Resume Download */}
-            <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{ animationDelay: '0.2s' }}>
+            <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{
+            animationDelay: '0.2s'
+          }}>
               <h3 className="text-2xl font-bold text-gradient mb-4">Professional Resume</h3>
               <p className="text-muted-foreground mb-6">
                 Download my complete resume for detailed information about my experience and skills.
@@ -107,7 +113,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{ animationDelay: '0.4s' }}>
+          <div className="glass-effect rounded-xl p-8 animate-bounce-in" style={{
+          animationDelay: '0.4s'
+        }}>
             <div className="flex items-center space-x-3 mb-6">
               <MessageSquare className="w-8 h-8 text-primary" />
               <h3 className="text-2xl font-bold text-gradient">Send Message</h3>
@@ -117,59 +125,25 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Your Name</label>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    required
-                    className="border-primary/20 focus:border-primary"
-                  />
+                  <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required className="border-primary/20 focus:border-primary" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Email Address</label>
-                  <Input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john@example.com"
-                    required
-                    className="border-primary/20 focus:border-primary"
-                  />
+                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" required className="border-primary/20 focus:border-primary" />
                 </div>
               </div>
               
               <div>
                 <label className="block text-sm font-medium mb-2">Subject</label>
-                <Input
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Project Discussion"
-                  required
-                  className="border-primary/20 focus:border-primary"
-                />
+                <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Project Discussion" required className="border-primary/20 focus:border-primary" />
               </div>
               
               <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project ideas..."
-                  rows={6}
-                  required
-                  className="border-primary/20 focus:border-primary resize-none"
-                />
+                <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project ideas..." rows={6} required className="border-primary/20 focus:border-primary resize-none" />
               </div>
               
-              <Button 
-                type="submit" 
-                className="w-full hover-lift animate-shimmer group"
-                size="lg"
-              >
+              <Button type="submit" className="w-full hover-lift animate-shimmer group" size="lg">
                 <Send className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                 Send Message
               </Button>
@@ -177,8 +151,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
