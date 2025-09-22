@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import LoadingScreen from '../components/LoadingScreen';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -42,11 +43,35 @@ const Index = () => {
         <Contact />
         
         {/* Footer */}
-        <footer className="py-8 bg-card/30 border-t border-border">
-          <div className="container mx-auto px-6 text-center">
-            <p className="text-muted-foreground">
-              © 2024 Zishu Ahmad. Built with passion and code.
-            </p>
+        <footer className="py-12 bg-gradient-to-r from-card/20 via-primary/5 to-card/20 border-t border-primary/20">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              {/* Contact Information */}
+              <div className="flex flex-wrap justify-center gap-6 mb-8">
+                <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full hover-lift">
+                  <Mail className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium">zishus76@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-2 bg-chart-2/10 px-4 py-2 rounded-full hover-lift">
+                  <Phone className="w-4 h-4 text-chart-2" />
+                  <span className="text-sm font-medium">Available on Request</span>
+                </div>
+                <div className="flex items-center gap-2 bg-chart-3/10 px-4 py-2 rounded-full hover-lift">
+                  <MapPin className="w-4 h-4 text-chart-3" />
+                  <span className="text-sm font-medium">Remote/Hybrid Ready</span>
+                </div>
+              </div>
+              
+              {/* Copyright */}
+              <div className="text-center">
+                <p className="text-muted-foreground font-medium">
+                  © 2024 Zishu Ahmad. Built with passion and expertise.
+                </p>
+                <p className="text-sm text-muted-foreground/70 mt-2">
+                  Ready for immediate opportunities • Professional Full Stack Developer
+                </p>
+              </div>
+            </div>
           </div>
         </footer>
       </div>

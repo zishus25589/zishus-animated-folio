@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Code2, Sparkles, Zap, Trophy } from 'lucide-react';
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -7,12 +8,13 @@ interface LoadingScreenProps {
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [displayText, setDisplayText] = useState('');
+  const [progress, setProgress] = useState(0);
   
   const steps = [
-    'Compiling code...',
-    'Loading projects...',
-    'Initializing portfolio...',
-    'Ready to code'
+    { text: 'Initializing premium experience...', icon: Sparkles },
+    { text: 'Loading professional portfolio...', icon: Code2 },
+    { text: 'Optimizing performance...', icon: Zap },
+    { text: 'Welcome to excellence!', icon: Trophy }
   ];
 
   useEffect(() => {
@@ -32,47 +34,78 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             } else {
               setTimeout(onComplete, 1500);
             }
-          }, 1000);
+          }, 800);
         }
-      }, 50);
+      }, 40);
     };
 
-    typeText(steps[currentStep], currentStep);
+    // Update progress
+    setProgress(((currentStep + 1) / steps.length) * 100);
+    
+    typeText(steps[currentStep].text, currentStep);
   }, [currentStep, onComplete]);
 
+  const CurrentIcon = steps[currentStep].icon;
+
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-background via-secondary/10 to-primary/5 flex items-center justify-center z-50">
-      <div className="text-center">
-        <div className="mb-8">
-          <div className="relative">
-            <div className="w-20 h-20 border-2 border-primary/30 rounded-lg rotate-45 mx-auto mb-4 animate-pulse"></div>
-            <div className="absolute inset-0 w-20 h-20 border-2 border-primary rounded-lg mx-auto animate-spin"></div>
-            <div className="absolute inset-2 w-16 h-16 bg-primary/10 rounded-lg mx-auto animate-pulse"></div>
+    <div className="fixed inset-0 bg-gradient-to-br from-background via-primary/5 to-background flex items-center justify-center z-50">
+      <div className="text-center max-w-md mx-auto px-6">
+        {/* Premium Logo Animation */}
+        <div className="mb-12 relative">
+          <div className="w-24 h-24 mx-auto relative">
+            {/* Outer rotating ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-spin"></div>
+            {/* Inner pulsing ring */}
+            <div className="absolute inset-2 rounded-full border-2 border-primary/40 animate-pulse"></div>
+            {/* Center icon container */}
+            <div className="absolute inset-4 bg-gradient-to-br from-primary to-chart-2 rounded-full flex items-center justify-center shadow-2xl animate-glow-pulse">
+              <CurrentIcon className="w-8 h-8 text-primary-foreground animate-bounce" />
+            </div>
+            {/* Sparkle effects */}
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-chart-2 rounded-full animate-ping"></div>
+            <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-primary rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
           </div>
         </div>
         
-        <div className="mb-6">
-          <p className="text-xl font-mono text-primary font-bold min-h-[1.5rem]">
+        {/* Professional Brand */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gradient mb-2">Zishu Ahmad</h1>
+          <p className="text-lg text-primary font-semibold">Premium Portfolio</p>
+        </div>
+        
+        {/* Loading Text */}
+        <div className="mb-8">
+          <p className="text-lg font-medium text-foreground min-h-[1.5rem] tracking-wide">
             {displayText}
-            <span className="typing-cursor animate-blink">|</span>
+            <span className="typing-cursor animate-blink ml-1 text-primary">|</span>
           </p>
         </div>
         
-        <div className="flex justify-center space-x-3 mb-8">
-          <div className="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
-          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="w-full bg-secondary/20 rounded-full h-2 overflow-hidden shadow-inner">
+            <div 
+              className="bg-gradient-to-r from-primary via-chart-2 to-primary h-2 rounded-full transition-all duration-1000 ease-out animate-shimmer shadow-lg"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+          <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+            <span>Loading...</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
         </div>
         
-        <div className="w-80 bg-secondary/20 rounded-full h-2 mx-auto overflow-hidden">
-          <div 
-            className="bg-gradient-to-r from-primary to-chart-2 h-2 rounded-full transition-all duration-1000 ease-out animate-shimmer"
-            style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-          ></div>
+        {/* Elegant Loading Dots */}
+        <div className="flex justify-center space-x-2 mb-8">
+          <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+          <div className="w-2 h-2 bg-chart-2 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+          <div className="w-2 h-2 bg-chart-3 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-2 h-2 bg-chart-4 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
         </div>
         
-        <p className="text-sm text-muted-foreground mt-4 font-mono">
-          Building the future, one line at a time...
+        {/* Professional Tagline */}
+        <p className="text-sm text-muted-foreground font-medium tracking-wide">
+          Crafting exceptional digital experiences
         </p>
       </div>
     </div>

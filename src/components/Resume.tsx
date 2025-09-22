@@ -1,4 +1,4 @@
-import { Download, Eye, Briefcase, GraduationCap, Award, Star, Code, Database, Globe, Zap, Mail, Phone } from 'lucide-react';
+import { Download, Eye, Briefcase, GraduationCap, Award, Star, Code, Database, Globe, Zap, Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Resume = () => {
@@ -27,10 +27,56 @@ const Resume = () => {
 
   const achievements = [
     "Built e-commerce platforms handling 1000+ daily transactions",
-    "Developed real-time chat applications with WebSocket integration",
+    "Developed real-time chat applications with WebSocket integration", 
     "Created automated task management systems for teams",
     "Optimized web applications for 40% faster loading times"
   ];
+
+  const downloadResume = () => {
+    // Create a simple resume content
+    const resumeContent = `
+ZISHU AHMAD - FULL STACK DEVELOPER
+Age: 19 Years | Email: zishus76@gmail.com
+Available for Immediate Start
+
+PROFESSIONAL SUMMARY
+Passionate Full Stack Developer specializing in MERN stack with expertise in building scalable, high-performance web applications. Committed to delivering exceptional user experiences.
+
+TECHNICAL SKILLS
+• Frontend: React.js, TypeScript, Tailwind CSS, HTML5, CSS3
+• Backend: Node.js, Express.js, RESTful APIs, Microservices
+• Database: MongoDB, MySQL, Database Design
+• Tools: Git, Docker, AWS, Performance Optimization
+
+KEY ACHIEVEMENTS
+• Built e-commerce platforms handling 1000+ daily transactions
+• Developed real-time chat applications with WebSocket integration
+• Created automated task management systems for teams
+• Optimized web applications for 40% faster loading times
+
+PROFESSIONAL EXPERIENCE
+Freelance Full Stack Developer (2+ Years)
+• Delivered 25+ successful web applications
+• Specialized in MERN stack development
+• Maintained 98% client satisfaction rate
+• Expertise in responsive design and cross-browser compatibility
+
+CONTACT
+Email: zishus76@gmail.com
+Phone: Available on Request
+Location: Available for Remote/Hybrid Work
+    `;
+    
+    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Zishu_Ahmad_Resume.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
 
   return (
     <section className="py-20 bg-gradient-to-br from-background via-primary/5 to-background">
@@ -65,11 +111,15 @@ const Resume = () => {
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-4">
                   <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
                     <Mail className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium">zishu.dev@gmail.com</span>
+                    <span className="text-sm font-medium">zishus76@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2 bg-chart-2/10 px-4 py-2 rounded-full">
                     <Phone className="w-4 h-4 text-chart-2" />
                     <span className="text-sm font-medium">Available on Request</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-chart-3/10 px-4 py-2 rounded-full">
+                    <MapPin className="w-4 h-4 text-chart-3" />
+                    <span className="text-sm font-medium">Remote/Hybrid Ready</span>
                   </div>
                 </div>
                 
@@ -148,6 +198,7 @@ const Resume = () => {
                 <Button 
                   size="lg" 
                   className="hover-lift animate-shimmer group bg-gradient-to-r from-primary to-chart-2 text-primary-foreground shadow-lg"
+                  onClick={downloadResume}
                 >
                   <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                   Download PDF Resume
