@@ -5,23 +5,23 @@ const Resume = () => {
   const resumeHighlights = [
     {
       icon: Briefcase,
-      title: "Professional Experience",
-      description: "3+ years of full-stack development with cutting-edge technologies"
+      title: "Work Experience",
+      description: "Freelance Full Stack Developer - Built 20+ responsive web applications using React, Express.js, and MongoDB"
     },
     {
       icon: GraduationCap,
-      title: "Education & Certifications",
-      description: "Computer Science background with industry-recognized certifications"
+      title: "Education & Skills",
+      description: "Self-taught programmer with expertise in MERN stack, RESTful APIs, and modern JavaScript frameworks"
     },
     {
       icon: Award,
-      title: "Achievements",
-      description: "Multiple project successes and performance optimization records"
+      title: "Key Projects",
+      description: "E-commerce platform with payment integration, Real-time chat application, Task management system"
     },
     {
       icon: Star,
-      title: "Skills Portfolio",
-      description: "Mastery in React, Node.js, Python, and modern development practices"
+      title: "Technical Expertise",
+      description: "React.js, Node.js, Express.js, MongoDB, MySQL, Git, Docker, AWS, TypeScript, Tailwind CSS"
     }
   ];
 
@@ -45,29 +45,31 @@ const Resume = () => {
               <div className="w-24 h-24 bg-gradient-to-br from-primary to-chart-2 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow-pulse">
                 <Briefcase className="w-12 h-12 text-primary-foreground" />
               </div>
-              <h3 className="text-3xl font-bold text-gradient mb-2">Zishu - Full Stack Developer</h3>
+              <h3 className="text-3xl font-bold text-gradient mb-2">Zishu Ahmad</h3>
+              <p className="text-lg text-primary font-semibold mb-1">Full Stack Developer</p>
+              <p className="text-base text-muted-foreground mb-2">Age: 19 Years</p>
               <p className="text-lg text-muted-foreground">
-                Passionate Developer | Problem Solver | Innovation Expert
+                Passionate Developer | MERN Stack Expert | API Specialist
               </p>
             </div>
 
             {/* Quick Stats */}
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               <div className="text-center p-4 bg-primary/10 rounded-xl border border-primary/20">
-                <div className="text-2xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground">Projects Completed</div>
+                <div className="text-2xl font-bold text-primary">20+</div>
+                <div className="text-sm text-muted-foreground">Web Apps Built</div>
               </div>
               <div className="text-center p-4 bg-chart-2/10 rounded-xl border border-chart-2/20">
-                <div className="text-2xl font-bold text-chart-2">3+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-2xl font-bold text-chart-2">2+</div>
+                <div className="text-sm text-muted-foreground">Years Coding</div>
               </div>
               <div className="text-center p-4 bg-chart-3/10 rounded-xl border border-chart-3/20">
-                <div className="text-2xl font-bold text-chart-3">15+</div>
-                <div className="text-sm text-muted-foreground">Technologies</div>
+                <div className="text-2xl font-bold text-chart-3">10+</div>
+                <div className="text-sm text-muted-foreground">Tech Stack</div>
               </div>
               <div className="text-center p-4 bg-chart-4/10 rounded-xl border border-chart-4/20">
-                <div className="text-2xl font-bold text-chart-4">100%</div>
-                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                <div className="text-2xl font-bold text-chart-4">5★</div>
+                <div className="text-sm text-muted-foreground">Client Rating</div>
               </div>
             </div>
 
